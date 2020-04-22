@@ -4,8 +4,8 @@ pipeline {
         stage('Build') {
             steps {
 				echo 'Build Starts!'
-		    		sh 'make'
-		    		archiveArtifacts artifacts: '**/target/*.md', fingerprint: true
+		    		sh './sample.md'
+		    		archiveArtifacts artifacts: 'build/libs/**/*.docx', fingerprint: true
 				echo 'Build Ends!'
 			
        }
