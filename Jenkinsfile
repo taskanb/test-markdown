@@ -5,7 +5,7 @@ pipeline {
             steps {
 				echo 'Build Starts!'
 		    		sh 'make'
-				sh 'sample.md'
+				sh './docs'
 		    		archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
 				echo 'Build Ends!'
 			
