@@ -8,13 +8,19 @@ pipeline {
 				echo 'Build Ends!'
 			
        }
-		post{
-			success{			
-				archiveArtifacts artifacts: 'target/*.docx', fingerprint: true	
+	  }
+		stage('Test') {
+            steps {
+                echo 'Test Starts!'
+            }
+			post{
+				success{			
+					archiveArtifacts artifacts: 'target/*.docx', fingerprint: true	
 			}
 		}
+	 }
 		
        
-     }
-	}
+   }
 }
+
