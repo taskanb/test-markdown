@@ -6,7 +6,7 @@ pipeline {
 				echo 'Build Starts!'
 		    		sh 'make'
 				sh './docs'
-		    		archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+		    		archiveArtifacts artifacts: '**/target/*.docx', fingerprint: true
 				echo 'Build Ends!'
 			
        }
