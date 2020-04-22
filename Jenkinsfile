@@ -1,15 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Build'){
             steps {
 				echo 'Build Starts!'
 		    		sh './sample.md'
-		    		archiveArtifacts artifacts: 'target/*.docx', fingerprint: true
+		    		
 				echo 'Build Ends!'
 			
        }
+		post{
+			success{			
+				archiveArtifacts artifacts: 'target/*.docx', fingerprint: true	
+			}
+		}
+		
        
      }
-}
+	}
 }
