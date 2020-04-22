@@ -5,8 +5,7 @@ pipeline {
             steps {
 				echo 'Build Starts!'
 		    		sh 'make'
-				sh './docs'
-		    		archiveArtifacts artifacts: '**/target/*.docx', fingerprint: true
+		    		archiveArtifacts artifacts: '**/target/*.md', fingerprint: true
 				echo 'Build Ends!'
 			
        }
