@@ -4,8 +4,7 @@ pipeline {
         stage('Build'){
             steps {
 				echo 'Build Starts!'
-		    		sh './sample.md'
-		    		
+		    		sh './sample.md'	    		
 				echo 'Build Ends!'
 			
        }
