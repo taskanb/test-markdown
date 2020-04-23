@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('Build'){
             steps {
-				echo 'Build Starts!'
-		    		sh 'run.sh'	    		
+				echo 'Build Starts!'	    		
 				echo 'Build Ends!'
 			
        }
