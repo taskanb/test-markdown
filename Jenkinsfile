@@ -4,7 +4,7 @@ pipeline {
         stage('Build'){
             steps {
 				echo 'Build Starts!'
-		    		mvn 'npm install'	    		
+		    		sh 'run.sh'	    		
 				echo 'Build Ends!'
 			
        }
