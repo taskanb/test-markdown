@@ -1,0 +1,10 @@
+{
+   "name": "markdown-pdf package",
+   "version": "0.0.0",
+   "description": "",
+   "author": "Put your name here if you want to",
+   "license": "BSD-2-Clause",
+   "devDependencies": {
+      "markdown-pdf": "*"
+   }
+}
