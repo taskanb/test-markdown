@@ -1,21 +1,27 @@
 pipeline {
-  agent any
-  stages {
-
-    stage('Stage 1') {
-      steps {
-        script {
-          echo 'Stage 1'
-        }
-      }
-    }
-
-    stage('Stage 2') {
-      steps {
-        script {
-          echo 'Stage 2'
-        }
-      }
-    }
-
-  }
+    agent any
+    stages {
+        stage('Build'){
+            steps {
+				echo 'Build Starts!'
+				npm install -g markdown-pdf
+				markdown-pdf /path/to/markdown	    		
+				echo 'Build Ends!'
+			
+       }
+	  }
+		stage('Test') {
+            steps {
+                echo 'Test Starts!'
+            }
+			post{
+				success{			
+					archiveArtifacts artifacts: 'target/*.docx', fingerprint: true	
+			}
+		}
+	 }
+		
+       
+   }
+}
+    
