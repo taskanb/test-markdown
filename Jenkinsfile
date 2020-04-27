@@ -3,9 +3,7 @@ pipeline {
     stages {
         stage('Build'){
             steps {
-				echo 'Build Starts!'
-				npm install -g markdown-pdf
-				markdown-pdf /path/to/markdown	    		
+				echo 'Build Start!'	    		
 				echo 'Build Ends!'
 			
        }
