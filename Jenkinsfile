@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Build'){
             steps {
-				echo 'Build Start!'	    		
+				echo 'Build Start!'
+		    		sh 'md_to_docx.sh'
 				echo 'Build Ends!'
 			
        }
