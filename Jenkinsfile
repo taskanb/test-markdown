@@ -1,13 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('Build'){
+        sstage("Build and start test image") {
             steps {
-				echo 'Build Starts!'	    		
-				echo 'Build Ends!'
-			
-       }
-	  }
+                
+                sh "docker-compose up -d"
+                waitUntilServicesReady
+            }
+        }
 		stage('Test') {
             steps {
                 echo 'Test Starts!'
