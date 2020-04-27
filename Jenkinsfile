@@ -1,24 +1,21 @@
 pipeline {
-    agent any
-    stages {
-        sstage("Build and start test image") {
-            steps {
-                
-                sh "docker-compose up -d"
-                waitUntilServicesReady
-            }
+  agent any
+  stages {
+
+    stage('Stage 1') {
+      steps {
+        script {
+          echo 'Stage 1'
         }
-		stage('Test') {
-            steps {
-                echo 'Test Starts!'
-            }
-			post{
-				success{			
-					archiveArtifacts artifacts: 'target/*.docx', fingerprint: true	
-			}
-		}
-	 }
-		
-       
-   }
-}
+      }
+    }
+
+    stage('Stage 2') {
+      steps {
+        script {
+          echo 'Stage 2'
+        }
+      }
+    }
+
+  }
