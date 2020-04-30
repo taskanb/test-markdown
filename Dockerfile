@@ -1,18 +1,23 @@
-FROM jenkins/jenkins:lts
-USER root
-RUN apt-get update && \
-apt-get -y install apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg2 \
-    software-properties-common && \
-curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
-add-apt-repository \
-    "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
-    $(lsb_release -cs) \
-    stable" && \
-apt-get update && \
-apt-get -y install docker-ce
-RUN apt-get install -y docker-ce
-RUN usermod -a -G docker jenkins
-USER jenkins
+
+FROM ubuntu:14.04
+
+# Set the env variables to non-interactive
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_PRIORITY critical
+ENV DEBCONF_NOWARNINGS yes
+
+RUN apt-get -qq update && \
+    apt-get -qq -y install wget texlive-latex-base texlive-fonts-recommended && \
+    apt-get -qq -y install texlive-fonts-extra texlive-latex-extra && \
+    apt-get clean
+
+RUN wget https://github.com/jgm/pandoc/releases/download/1.13.2/pandoc-1.13.2-1-amd64.deb && \
+    dpkg -i pandoc* && \
+    rm pandoc* && \
+    apt-get clean
+
+RUN mkdir /docs
+WORKDIR /docs
+
+ADD start.sh /start.sh
+CMD /start.sh
