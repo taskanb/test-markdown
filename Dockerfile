@@ -1,23 +1,27 @@
 
 FROM ubuntu:14.04
 
-# Set the env variables to non-interactive
-ENV DEBIAN_FRONTEND noninteractive
-ENV DEBIAN_PRIORITY critical
-ENV DEBCONF_NOWARNINGS yes
+# install latex packages
+RUN apt-get update -y \
+  && apt-get install -y -o Acquire::Retries=10 --no-install-recommends \
+    texlive-latex-base \
+    texlive-xetex latex-xcolor \
+    texlive-math-extra \
+    texlive-latex-extra \
+    texlive-fonts-extra \
+    texlive-bibtex-extra \
+    fontconfig \
+    lmodern
 
-RUN apt-get -qq update && \
-    apt-get -qq -y install wget texlive-latex-base texlive-fonts-recommended && \
-    apt-get -qq -y install texlive-fonts-extra texlive-latex-extra && \
-    apt-get clean
+# will ease up the update process
+# updating this env variable will trigger the automatic build of the Docker image
+ENV PANDOC_VERSION "1.19.2.1"
 
-RUN wget https://github.com/jgm/pandoc/releases/download/1.13.2/pandoc-1.13.2-1-amd64.deb && \
-    dpkg -i pandoc* && \
-    rm pandoc* && \
-    apt-get clean
+# install pandoc
+RUN cabal update && cabal install pandoc-${PANDOC_VERSION}
 
-RUN mkdir /docs
-WORKDIR /docs
+WORKDIR /source
 
-ADD start.sh /start.sh
-CMD /start.sh
+ENTRYPOINT ["/root/.cabal/bin/pandoc"]
+
+CMD ["--help"]
