@@ -20,6 +20,14 @@ services:
         volumes:
             - jenkins-docker-certs:/certs/client
             - jenkins-data:/var/jenkins_home
+    pandoc:
+        image: pandoc/latex:2.6
+        ports:
+        - "8080"
+        - "50000"
+        container_name: docker-jenkins
+        volumes:
+            - .:/pandoc
         networks:
             - jenkins
             aliases:
