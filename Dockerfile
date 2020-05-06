@@ -1,33 +1,28 @@
-FROM debian:stretch-slim
+FROM haskell:8.0
 
-ARG BUILD_DATE
-ARG VCS_REF
-ARG DEBIAN_FRONTEND=noninteractive
+MAINTAINER James Gregory <james@jagregory.com>
 
-ENV PANDOC_VER=2.2.2.1
-
-LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.vcs-url="https://github.com/phpearth/docker-pandoc.git" \
-      org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.schema-version="1.0" \
-      org.label-schema.vendor="PHP.earth" \
-      org.label-schema.name="docker-pandoc" \
-      org.label-schema.description="Pandoc Docker image" \
-      org.label-schema.url="https://github.com/phpearth/docker-pandoc"
-
-RUN apt-get update && apt-get -y --no-install-recommends install \
-    wget \
-    ca-certificates \
-    texlive \
-    texlive-xetex \
+# install latex packages
+RUN apt-get update -y \
+  && apt-get install -y -o Acquire::Retries=10 --no-install-recommends \
+    texlive-latex-base \
+    texlive-xetex latex-xcolor \
+    texlive-math-extra \
+    texlive-latex-extra \
     texlive-fonts-extra \
-    texlive-luatex \
-    lmodern \
-    netbase \
-    && cd /opt && wget https://github.com/jgm/pandoc/releases/download/$PANDOC_VER/pandoc-$PANDOC_VER-1-amd64.deb \
-    && dpkg -i pandoc-$PANDOC_VER-1-amd64.deb \
-    && apt-get -y autoremove && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /opt/*
+    texlive-bibtex-extra \
+    fontconfig \
+    lmodern
 
-WORKDIR /jenkins_home
+# will ease up the update process
+# updating this env variable will trigger the automatic build of the Docker image
+ENV PANDOC_VERSION "1.19.2.1"
 
-CMD ["/usr/bin/pandoc", "--help"]
+# install pandoc
+RUN cabal update && cabal install pandoc-${PANDOC_VERSION}
+
+WORKDIR /source
+
+ENTRYPOINT ["/root/.cabal/bin/pandoc"]
+
+CMD ["--help"]
