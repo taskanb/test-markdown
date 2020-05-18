@@ -6,9 +6,9 @@ pipeline {
 			docker { image 'pandoc/latex' }
 			}
 			steps{	
-				echo 'Building Starts!'
+				echo 'Converting Starts!'
 				sh 'md_to_docx.sh' 
-				echo 'Building Ends!'
+				echo 'Converting Ends!'
 				
 				}
 		}
@@ -18,6 +18,7 @@ pipeline {
 			steps{
 				sh 'docker --version'
 				sh 'docker images'
+				sh 'docker container ls -a'
 			}
 		}	
 		
