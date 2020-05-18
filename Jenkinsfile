@@ -7,7 +7,7 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
-				sh 'md_to_docx.sh' 
+				sh './md_to_docx.sh' 
 				echo 'Converting Ends!'
 				
 				}
