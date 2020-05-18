@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 FILES=*.md
 for f in $FILES
 do
