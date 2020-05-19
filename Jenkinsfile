@@ -9,9 +9,7 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
-				sh 'id'
-				sh 'whoami'
-				sh 'pwd'
+				
 				echo 'Converting Ends!'
 				}
 		}
@@ -22,7 +20,9 @@ pipeline {
 				sh 'docker --version'
 				sh 'docker images'
 				sh 'docker ps'
-				
+				sh 'id'
+				sh 'whoami'
+				sh 'pwd'
 			}
 		}	
 		
