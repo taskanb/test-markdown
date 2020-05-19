@@ -9,8 +9,7 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
-				sh "su chown jenkins-withdocker: \$PWD/"
-				sh '${WORKSPACE}' 
+				sh 'whoami' 
 				echo 'Converting Ends!'
 				
 				}
