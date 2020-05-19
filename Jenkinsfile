@@ -9,8 +9,6 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
-				sh 'whoami' 
-				echo 'Converting Ends!'
 				
 				}
 		}
@@ -21,7 +19,7 @@ pipeline {
 				sh 'docker --version'
 				sh 'docker images'
 				sh 'docker container ls -a'
-				sh 'whoami'
+				sh './md_to_docx.sh'
 			}
 		}	
 		
