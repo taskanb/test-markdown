@@ -3,8 +3,9 @@ pipeline {
     stages {
         stage('Pandoc') {
 			agent{
-			docker { image 'pandoc/latex' }
+			docker { image 'pandoc/latex' 
 				args '-u root:root'
+			       }
 			}
 			steps{	
 				echo 'Converting Starts!'
