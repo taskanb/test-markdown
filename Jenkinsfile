@@ -9,7 +9,7 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
-				sh 'ls -l'
+				
 				echo 'Converting Ends!'
 				}
 		}
@@ -20,6 +20,7 @@ pipeline {
 				sh 'docker --version'
 				sh 'docker images'
 				sh 'docker ps'
+				sh 'ls -l'
 			}
 		}	
 		
