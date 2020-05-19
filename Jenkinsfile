@@ -9,7 +9,7 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
-				sh "su chown jenkins: -R \$PWD/"
+				sh "su chown jenkins: \$PWD/"
 				sh '${WORKSPACE}' 
 				echo 'Converting Ends!'
 				
