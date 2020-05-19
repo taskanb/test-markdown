@@ -21,6 +21,7 @@ pipeline {
 				sh 'docker --version'
 				sh 'docker images'
 				sh 'docker container ls -a'
+				sh 'whoami'
 			}
 		}	
 		
