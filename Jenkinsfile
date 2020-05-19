@@ -9,7 +9,7 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
-				bat './md_to_docx.bat'
+				sh './md_to_docx.sh'
 				echo 'Converting Ends!'
 				}
 		}
