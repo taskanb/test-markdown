@@ -9,7 +9,7 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
-				bash '${WORKSPACE}/md_to_docx.sh'
+				sh '${WORKSPACE}/markdowntodocs/md_to_docx.sh'
 				echo 'Converting Ends!'
 				}
 		}
