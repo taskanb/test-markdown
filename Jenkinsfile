@@ -9,17 +9,18 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
-				
+				sh '${WORKSPACE}/md_to_docx.sh'
+				echo 'Converting Ends!'
 				}
 		}
 			
 		stage('docker') {
 			agent any
 			steps{
-				sh 'docker --version'
+				sh 'docker info'
 				sh 'docker images'
 				sh 'docker container ls -a'
-				sh './md_to_docx.sh'
+				
 			}
 		}	
 		
