@@ -7,7 +7,7 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
-				sh 'pwd' 
+				sh '${WORKSPACE}' 
 				echo 'Converting Ends!'
 				
 				}
