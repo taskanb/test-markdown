@@ -9,7 +9,7 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
-				sh '${WORKSPACE}'
+				sh 'echo "Hello World"'
 				echo 'Converting Ends!'
 				}
 		}
