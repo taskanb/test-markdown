@@ -9,7 +9,9 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
-				sh '${WORKSPACE}/md_to_docx.sh'
+				sh 'id'
+				sh 'whoami'
+				sh 'pwd'
 				echo 'Converting Ends!'
 				}
 		}
