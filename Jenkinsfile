@@ -4,12 +4,12 @@ pipeline {
         stage('Pandoc') {
 			agent{
 			docker { image 'pandoc/latex' 
-				args '-u root:root'
+		                 args '-u root:root'
 			       }
 			}
 			steps{	
 				echo 'Converting Starts!'
-				sh 'echo "Hello World"'
+				bash 'md_to_docx.sh'
 				echo 'Converting Ends!'
 				}
 		}
