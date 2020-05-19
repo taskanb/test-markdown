@@ -1,4 +1,3 @@
-sh """\
 #!/bin/sh
 FILES=*.md
 for f in $FILES
