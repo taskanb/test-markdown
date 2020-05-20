@@ -4,7 +4,7 @@ pipeline {
         stage('Pandoc') {
 			agent{
 			docker { image 'pandoc/latex' 
-		                 args '-u root:root'
+		                 args '-u jenkins:jenkins'
 			       }
 			}
 			steps{	
