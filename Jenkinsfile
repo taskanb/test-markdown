@@ -9,7 +9,6 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
-				sh 'whoami'
 				sh '${PWD}/md_to_docx.sh'
 				echo 'Converting Ends!'
 				}
