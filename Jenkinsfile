@@ -9,6 +9,7 @@ pipeline {
 			}
 			steps{	
 				echo 'Converting Starts!'
+				sh 'whoami'
 				sh '${PWD}/md_to_docx.sh'
 				echo 'Converting Ends!'
 				}
@@ -21,6 +22,7 @@ pipeline {
 				sh 'docker images'
 				sh 'docker ps'
 				sh 'ls -l'
+				sh 'whoami'
 			}
 		}	
 		
