@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Pandoc') {
 			agent{
-			docker { image 'pandoc/latex' 
+			docker { image 'pandoc/latex'
+				args '-v /var/run/docker.sock:/var/run/docker.sock'
 		                 
 			       }
 			}
